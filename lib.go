@@ -5,14 +5,17 @@ import (
 	"fmt"
 )
 
-// Single item interface
-func Sha256(s string) (rv string) {
-	rv = HashStrings(s)
-	return
+// HashStrings hash a set of strings and return in hex-strings form
+func HashStrings(a ...string) string {
+	h := sha256.New()
+	for _, z := range a {
+		h.Write([]byte(z))
+	}
+	return fmt.Sprintf("%x", (h.Sum(nil)))
 }
 
-// hash a set of strings and return in hex-strings form
-func HashStrings(a ...string) string {
+// HashStrings hash a set of strings and return in hex-strings form
+func Sha256(a ...string) string {
 	h := sha256.New()
 	for _, z := range a {
 		h.Write([]byte(z))
