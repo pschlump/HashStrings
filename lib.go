@@ -2,6 +2,7 @@ package HashStrings
 
 import (
 	"crypto/sha256"
+	"crypto/sha512"
 	"fmt"
 )
 
@@ -35,4 +36,12 @@ func HashBytes(a ...[]byte) []byte {
 		h.Write(z)
 	}
 	return h.Sum(nil)
+}
+
+func HashStringsSha512(a ...string) string {
+	h := sha512.New()
+	for _, z := range a {
+		h.Write([]byte(z))
+	}
+	return fmt.Sprintf("%x", (h.Sum(nil)))
 }
