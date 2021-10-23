@@ -38,15 +38,6 @@ func HashStringsAsByte(a ...string) []byte {
 }
 
 // HashStrings hash a set of strings and return in hex-strings form
-func HashStringsAsByte(a ...string) []byte {
-	h := sha256.New()
-	for _, z := range a {
-		h.Write([]byte(z))
-	}
-	return h.Sum(nil)
-}
-
-// HashStrings hash a set of strings and return in hex-strings form
 func Sha256(a ...string) string {
 	h := sha256.New()
 	for _, z := range a {
